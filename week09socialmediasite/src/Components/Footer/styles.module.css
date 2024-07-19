@@ -1,0 +1,11 @@
+.footer {
+    @apply w-full;
+    @apply bg-neutral-800 text-slate-200;
+    @apply flex flex-row justify-center;
+    @apply p-2;
+    @apply static bottom-0;
+}
+
+.ul {
+    @apply flex flex-row gap-8;
+}
