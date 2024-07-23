@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
 import { useState, useEffect } from 'react';
-import { useUser } from '@clerk/clerk-react';
+import { useUser, RedirectToSignIn } from '@clerk/clerk-react';
 import { supabase } from '../libs/supabaseClient';
 
 export default function Comments() {
-  const { user } = useUser();
+  const { isLoaded, user } = useUser();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [message, setMessage] = useState('');
@@ -13,11 +13,17 @@ export default function Comments() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const username = user?.username || user?.primaryEmailAddress?.emailAddress || 'Anonymous'; // Adjust based on your user data
+    if (!user) {
+      setMessage('User not found.');
+      return;
+    }
+    
+    const username = user?.username || user?.primaryEmailAddress?.emailAddress || 'Anonymous';
 
+    // Inserting the post
     const { data, error } = await supabase
       .from('post')
-      .insert([{ title, content, username }]);
+      .insert([{ title, content, username, user_id: user.id }]);
 
     if (error) {
       setMessage(`Error: ${error.message}`);
@@ -30,6 +36,7 @@ export default function Comments() {
   };
 
   const fetchPosts = async () => {
+    // Fetching posts
     const { data, error } = await supabase
       .from('post')
       .select('*')
@@ -43,8 +50,18 @@ export default function Comments() {
   };
 
   useEffect(() => {
-    fetchPosts();
-  }, []);
+    if (isLoaded) {
+      fetchPosts();
+    }
+  }, [isLoaded]);
+
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user) {
+    return <RedirectToSignIn />;
+  }
 
   return (
     <div>

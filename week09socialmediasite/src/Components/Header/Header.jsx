@@ -9,7 +9,9 @@ import {
   UserProfile,
 } from "@clerk/nextjs";
 
+
 import styles from "./styles.module.css";
+
 
 const Header = () => {
   return (
@@ -27,6 +29,11 @@ const Header = () => {
           <li>
             <button className={`${styles.button}`}>
               <Link href="/posts">Posts</Link>
+            </button>
+          </li>
+          <li>
+            <button className={`${styles.button}`}>
+              <Link href="/user">Profile</Link>
             </button>
           </li>
         </ul>

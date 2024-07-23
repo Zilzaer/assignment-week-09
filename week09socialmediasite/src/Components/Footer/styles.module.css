@@ -9,3 +9,45 @@
 .ul {
     @apply flex flex-row gap-8;
 }
+
+/* styles.module.css */
+
+.footer {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .accordion {
+    margin-top: 20px;
+  }
+  
+  .accordionItem {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .accordionHeader {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    
+  }
+  
+  .accordionTrigger {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .accordionContent {
+    padding: 10px;
+    
+  }
+  
