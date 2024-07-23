@@ -7,6 +7,3 @@ export default function SignUpPage() {
     </>
   );
 }
-
-//Make sure the user sees this page first, before they can complete their own profile page.
-//The reason is, when the user creates a profile here, clerk assigns them a userId

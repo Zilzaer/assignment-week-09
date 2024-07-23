@@ -1,13 +1,18 @@
 import Link from "next/link";
-import Image from 'next/image'
-import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
-
+import Image from "next/image";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+  UserProfile,
+} from "@clerk/nextjs";
 
 import styles from "./styles.module.css";
 
 const Header = () => {
   return (
-    <ClerkProvider>
     <header className={`${styles.header}`}>
       <div>
         <h1 className="title">Chatter</h1>
@@ -21,21 +26,18 @@ const Header = () => {
           </li>
           <li>
             <button className={`${styles.button}`}>
-              <Link href="/Posts">Posts</Link>
+              <Link href="/posts">Posts</Link>
             </button>
           </li>
-          <li>
-          <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </li>
         </ul>
+        <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
       </nav>
     </header>
-    </ClerkProvider>
   );
 };
 

@@ -7,6 +7,7 @@ import Header from "@/Components/Header/Header";
 
 import './globals.css'
 
+
 export default function Home() {
   return (
     <div>
@@ -14,7 +15,6 @@ export default function Home() {
       <Header></Header>
       <main></main>
       <Footer></Footer>
-      
     </main>
     </div>
   );

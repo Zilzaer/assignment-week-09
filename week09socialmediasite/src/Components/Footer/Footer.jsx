@@ -9,7 +9,7 @@ const Footer = () => {
         <nav>
           <ul className={`${styles.ul}`}>
             <h1>Joshua Day - Week 09 Assignment - Student Demo</h1>
-            <a href="https://github.com/Zilzaer">Github</a>
+            <a href="https://github.com/Zilzaer">GitHub</a>
             <a href="https://www.linkedin.com/in/joshua-day-ba1652311/">LinkedIn</a>
           </ul>
         </nav>
